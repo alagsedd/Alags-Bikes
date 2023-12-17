@@ -1,0 +1,11 @@
+.cover {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.parent {
+    padding: 1rem;
+    background-color:  #0d2136;
+    border-radius: 10px;
+}
