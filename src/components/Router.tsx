@@ -5,6 +5,7 @@ import HomePage from "./HomePage";
 import AuthPage from "../pages/AuthPage";
 import Profile from "./Profile";
 import BikesGrid from "./BikesGrid";
+import BikeDetailsPage from "../pages/BikeDetailsPage";
 
 export const router = createBrowserRouter([
   {
@@ -16,6 +17,7 @@ export const router = createBrowserRouter([
       { path: "/sign-up", element: <AuthPage /> },
       { path: "/profile", element: <Profile /> },
       { path: "/bikes-grid", element: <BikesGrid /> },
+      { path: "/:label", element: <BikeDetailsPage /> },
     ],
   },
 ]);

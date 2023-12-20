@@ -55,7 +55,6 @@ const HeroSection = () => {
         </div>
 
         <div
-          data-aos="fade-up-right"
           style={{ backgroundImage: `url(${currentBackground})` }}
           className={styles.box2}
         ></div>

@@ -11,6 +11,7 @@ import { FaUser } from "react-icons/fa";
 import { RiEBikeFill } from "react-icons/ri";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { IoCloseCircle } from "react-icons/io5";
+import { FaCartShopping } from "react-icons/fa6";
 
 const NavBar = () => {
   const [user] = useAuthState(auth);
@@ -59,6 +60,11 @@ const NavBar = () => {
               </React.Fragment>
             )}
           </li>
+          {user && (
+            <li>
+              <FaCartShopping /> Cart
+            </li>
+          )}
         </ul>
 
         <div className={styles.optionBox}>
@@ -115,6 +121,12 @@ const NavBar = () => {
               </React.Fragment>
             )}
           </li>
+
+          {user && (
+            <li>
+              <FaCartShopping /> Cart
+            </li>
+          )}
         </ul>
       )}
     </>

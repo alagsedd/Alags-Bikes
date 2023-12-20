@@ -1,0 +1,26 @@
+.parent {
+    border-radius: 10px;
+    margin: 0.2rem;
+    margin-bottom: 0.6rem;
+    background-color: #0d2136;
+    height: 16rem;
+    width: 15rem;
+    transition: transform 0.5s 0.2s;
+}
+.image {
+    border-radius: 10px;
+    width: 100%;
+    height: 10rem;
+    object-fit: cover;
+}
+.label {
+    padding: 0.3rem;
+    margin-bottom: 0;
+}
+.price {
+    color: aqua;
+    padding: 0 0.5rem;
+}
+.parent:hover {
+    transform: scale(1.1);
+}
