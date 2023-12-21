@@ -10,7 +10,6 @@ import b8 from "../assets/bikes/bike8.webp";
 import b9 from "../assets/bikes/bike9.webp";
 import b10 from "../assets/bikes/bike10.webp";
 import BikeCard from "../cards/BikeCard";
-import { Link } from "react-router-dom";
 
 const BikesGrid = () => {
   const bikes = [
@@ -83,15 +82,13 @@ const BikesGrid = () => {
       </h1>
 
       <div className={styles.parent}>
-        {bikes.map((bike, index) => (
-          <Link className={styles.link} key={index} to={`/${bike.label}`}>
-            <BikeCard
-              label={bike.label}
-              poster={bike.poster}
-              price={bike.price}
-              key={bike.id}
-            />
-          </Link>
+        {bikes.map((bike) => (
+          <BikeCard
+            label={bike.label}
+            poster={bike.poster}
+            price={bike.price}
+            key={bike.id}
+          />
         ))}
       </div>
     </>

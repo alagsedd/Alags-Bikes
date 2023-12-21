@@ -1,7 +1,6 @@
 import styles from "../styles/NavBar.module.css";
 import { FaHome } from "react-icons/fa";
 import { RiTeamFill } from "react-icons/ri";
-// import { TiContacts } from "react-icons/ti";
 import { IoMdLogIn } from "react-icons/io";
 import { Link } from "react-router-dom";
 import { useAuthState } from "react-firebase-hooks/auth";
@@ -12,10 +11,25 @@ import { RiEBikeFill } from "react-icons/ri";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { IoCloseCircle } from "react-icons/io5";
 import { FaCartShopping } from "react-icons/fa6";
+import { useContext } from "react";
+import Button from "react-bootstrap/Button";
+import Modal from "react-bootstrap/Modal";
+import BuyCountContext from "../contexts/BuyCountContext";
 
 const NavBar = () => {
   const [user] = useAuthState(auth);
   const [showMenu, setShowMenu] = useState(false);
+  // const [showCart, setShowCart] = useState(false);
+  const { intialState } = useContext(BuyCountContext);
+
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+
+  const handleShow = () => {
+    console.log("clicked");
+    setShow(true);
+  };
 
   return (
     <>
@@ -61,8 +75,8 @@ const NavBar = () => {
             )}
           </li>
           {user && (
-            <li>
-              <FaCartShopping /> Cart
+            <li onClick={handleShow}>
+              <FaCartShopping className={styles.icon} /> Cart
             </li>
           )}
         </ul>
@@ -123,12 +137,32 @@ const NavBar = () => {
           </li>
 
           {user && (
-            <li>
-              <FaCartShopping /> Cart
+            <li onClick={handleShow}>
+              <FaCartShopping className={styles.icon} /> Cart
             </li>
           )}
         </ul>
       )}
+      <Modal
+        show={show}
+        onHide={handleClose}
+        backdrop="static"
+        keyboard={false}
+      >
+        <Modal.Header closeButton>
+          <Modal.Title>Items purchase count</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          {intialState === 0
+            ? "You have no pending items"
+            : `You have ${intialState} pending items`}
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleClose}>
+            Close
+          </Button>
+        </Modal.Footer>
+      </Modal>
     </>
   );
 };

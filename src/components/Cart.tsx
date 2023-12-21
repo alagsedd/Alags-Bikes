@@ -1,7 +1,12 @@
+import { useContext, useState } from "react";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
+import BuyCountContext from "../contexts/BuyCountContext";
 
 const Cart = () => {
+  const [showCart, setShowCart] = useState(false);
+  const { intialState } = useContext(BuyCountContext);
+
   return (
     <div
       className="modal show"
@@ -9,16 +14,18 @@ const Cart = () => {
     >
       <Modal.Dialog>
         <Modal.Header closeButton>
-          <Modal.Title>Modal title</Modal.Title>
+          <Modal.Title>Items purchase Count</Modal.Title>
         </Modal.Header>
 
         <Modal.Body>
-          <p>Here's your cart details.</p>
+          <p>Pending items: {intialState}</p>
         </Modal.Body>
 
         <Modal.Footer>
-          <Button variant="secondary">Close</Button>
-          <Button variant="primary">Save changes</Button>
+          <Button onClick={() => setShowCart(false)} variant="secondary">
+            Close
+          </Button>
+          {/* <Button variant="primary">Save changes</Button> */}
         </Modal.Footer>
       </Modal.Dialog>
     </div>
